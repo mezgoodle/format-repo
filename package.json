@@ -4,7 +4,9 @@
   "description": "GitHub action workflow to share your repository to GitLab or BitBucket",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+    "fix-lint": "eslint . --fix"
   },
   "repository": {
     "type": "git",
@@ -26,5 +28,9 @@
   "dependencies": {
     "@actions/core": "^1.10.0",
     "@actions/github": "^5.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.39.0",
+    "eslint-config-google": "^0.14.0"
   }
 }
