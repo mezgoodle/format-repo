@@ -4,7 +4,7 @@
   "description": "GitHub action workflow to share your repository to GitLab or BitBucket",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "eslint .",
     "lint": "eslint .",
     "fix-lint": "eslint . --fix"
   },

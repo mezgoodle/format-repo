@@ -25,3 +25,4 @@ with:
 # Links and examples
 
 https://github.com/actions/javascript-action
+https://github.com/actions/toolkit
