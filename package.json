@@ -6,7 +6,8 @@
   "scripts": {
     "test": "eslint .",
     "lint": "eslint .",
-    "fix-lint": "eslint . --fix"
+    "fix-lint": "eslint . --fix",
+    "build": "ncc build index.js --license licenses.txt"
   },
   "repository": {
     "type": "git",
