@@ -3,9 +3,11 @@ const github = require('@actions/github');
 
 try {
   // `who-to-greet` input defined in action metadata file
-  core.info('Getting the variable');
-  const nameToGreet = core.getInput('who-to-greet', {'required': false});
-  console.log(`Hello ${nameToGreet}!`);
+  core.info('Getting the variables');
+  const gitlabToken = core.getInput('who-to-greet', {'required': false});
+  console.log(`GitLab token: ${gitlabToken}!`);
+  const bitbucketToken = core.getInput('who-to-greet', {'required': false});
+  console.log(`BitBucket Token: ${bitbucketToken}!`);
   const time = new Date().toTimeString();
   core.info('Setting the time as output');
   core.setOutput('time', time);

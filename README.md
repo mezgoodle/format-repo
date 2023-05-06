@@ -26,3 +26,5 @@ with:
 
 https://github.com/actions/javascript-action
 https://github.com/actions/toolkit
+
+`ncc build index.js --license licenses.txt`
