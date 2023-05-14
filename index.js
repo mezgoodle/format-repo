@@ -1,8 +1,11 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const exec = require('@actions/exec');
 
 try {
   // `who-to-greet` input defined in action metadata file
+  core.info('Show git command');
+  await exec.exec('git status');
   core.info('Getting the variables');
   const gitlabToken = core.getInput('gitlabToken', {'required': false});
   console.log(`GitLab token: ${gitlabToken}!`);
