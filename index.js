@@ -24,6 +24,7 @@ try {
   console.log(myOutput);
   console.log(myError);
   core.info('Getting the variables');
+  core.info('Show git command');
   const gitlabToken = core.getInput('gitlabToken', {'required': false});
   console.log(`GitLab token: ${gitlabToken}!`);
   const bitbucketToken = core.getInput('bitbucketToken', {'required': false});
