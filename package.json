@@ -4,8 +4,8 @@
   "description": "GitHub action workflow to share your repository to GitLab or BitBucket",
   "main": "index.js",
   "scripts": {
-    "test": "eslint .",
     "lint": "eslint .",
+    "test": "jest",
     "fix-lint": "eslint . --fix",
     "build": "ncc build index.js --license licenses.txt"
   },
