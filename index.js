@@ -3,9 +3,26 @@ const github = require('@actions/github');
 const exec = require('@actions/exec');
 
 try {
+  let myOutput = '';
+  let myError = '';
+
+  const options = {};
+  options.listeners = {
+    stdout: (data) => {
+      myOutput += data.toString();
+    },
+    stderr: (data) => {
+      myError += data.toString();
+    },
+  };
+  options.cwd = './lib';
+
+
   // `who-to-greet` input defined in action metadata file
   core.info('Show git command');
-  await exec.exec('git status');
+  await exec.exec('git status', options=options);
+  console.log(myOutput);
+  console.log(myError);
   core.info('Getting the variables');
   const gitlabToken = core.getInput('gitlabToken', {'required': false});
   console.log(`GitLab token: ${gitlabToken}!`);
