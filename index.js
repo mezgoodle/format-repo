@@ -6,7 +6,7 @@ const mainFunc = async () => {
   let myOutput = '';
   let myError = '';
 
-  const options = {};
+  let options = {};
   options.listeners = {
     stdout: (data) => {
       myOutput += data.toString();
