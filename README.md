@@ -26,6 +26,7 @@ with:
 
 https://github.com/actions/javascript-action
 https://github.com/actions/toolkit
+https://docs.github.com/en/actions/creating-actions/creating-a-javascript-action
 https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions
 
 `npm i -g @vercel/ncc`
