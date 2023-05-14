@@ -12,4 +12,4 @@ options.listeners = {
 };
 options.cwd = './lib';
 
-export default {myOutput, myError};
+module.exports = {myOutput, myError, options};

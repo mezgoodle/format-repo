@@ -1,7 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 const exec = require('@actions/exec');
-const {myOutput, myError} = require('./utils/config');
+const {myOutput, myError, options} = require('./utils/config');
 
 const mainFunc = async () => {
   // `who-to-greet` input defined in action metadata file
