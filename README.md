@@ -1,3 +1,5 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=mezgoodle_share-repo&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=mezgoodle_share-repo)
+
 # Hello world javascript action
 
 This action prints "Hello World" or "Hello" + the name of a person to greet to the log.

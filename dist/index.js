@@ -10843,6 +10843,33 @@ function wrappy (fn, cb) {
 
 /***/ }),
 
+/***/ 4208:
+/***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
+
+"use strict";
+__nccwpck_require__.r(__webpack_exports__);
+/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+let myOutput = '';
+let myError = '';
+
+const options = {};
+options.listeners = {
+  stdout: (data) => {
+    myOutput += data.toString();
+  },
+  stderr: (data) => {
+    myError += data.toString();
+  },
+};
+options.cwd = './lib';
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({myOutput, myError});
+
+
+/***/ }),
+
 /***/ 8687:
 /***/ ((module) => {
 
@@ -11036,6 +11063,34 @@ module.exports = JSON.parse('[[[0,44],"disallowed_STD3_valid"],[[45,46],"valid"]
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__nccwpck_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__nccwpck_require__.o(definition, key) && !__nccwpck_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__nccwpck_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__nccwpck_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/compat */
 /******/ 	
 /******/ 	if (typeof __nccwpck_require__ !== 'undefined') __nccwpck_require__.ab = __dirname + "/";
@@ -11047,26 +11102,12 @@ var __webpack_exports__ = {};
 const core = __nccwpck_require__(7744);
 const github = __nccwpck_require__(6658);
 const exec = __nccwpck_require__(2648);
+const {myOutput, myError} = __nccwpck_require__(4208);
 
 const mainFunc = async () => {
-  let myOutput = '';
-  let myError = '';
-
-  let options = {};
-  options.listeners = {
-    stdout: (data) => {
-      myOutput += data.toString();
-    },
-    stderr: (data) => {
-      myError += data.toString();
-    },
-  };
-  options.cwd = './lib';
-
-
   // `who-to-greet` input defined in action metadata file
   core.info('Show git command');
-  await exec.exec('git status', options=options);
+  await exec.exec({commandLine: 'git status', options: options});
   console.log(myOutput);
   console.log(myError);
   core.info('Getting the variables');

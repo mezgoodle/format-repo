@@ -1,26 +1,12 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 const exec = require('@actions/exec');
+const {myOutput, myError} = require('./utils/config');
 
 const mainFunc = async () => {
-  let myOutput = '';
-  let myError = '';
-
-  let options = {};
-  options.listeners = {
-    stdout: (data) => {
-      myOutput += data.toString();
-    },
-    stderr: (data) => {
-      myError += data.toString();
-    },
-  };
-  options.cwd = './lib';
-
-
   // `who-to-greet` input defined in action metadata file
   core.info('Show git command');
-  await exec.exec('git status', options=options);
+  await exec.exec({commandLine: 'git status', options: options});
   console.log(myOutput);
   console.log(myError);
   core.info('Getting the variables');

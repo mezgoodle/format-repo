@@ -1,4 +1,5 @@
-const wait = require('./wait');
+const wait = require('../wait');
+const _http = require("../utils/requests");
 const process = require('process');
 const cp = require('child_process');
 const path = require('path');
@@ -23,3 +24,8 @@ test('test runs', () => {
   const result = cp.exec(`node ${ip}`, {env: process.env}).toString();
   console.log(result);
 });
+
+test('request tests', () => {
+  const http = _http;
+  expect(http).toBeDefined()
+})
