@@ -1,5 +1,5 @@
 const wait = require('../wait');
-const Api = require("../utils/requests");
+const Api = require('../utils/requests');
 const process = require('process');
 const cp = require('child_process');
 const path = require('path');
@@ -25,7 +25,9 @@ test('test runs', () => {
   console.log(result);
 });
 
-test('request tests', () => {
-  const api = new Api("test-client");
-  expect(api).toBeDefined()
-})
+test('request tests', async () => {
+  const api = new Api('test-client');
+  expect(api).toBeDefined();
+  const obj = await api.checkRepository('43937419');
+  expect(obj.name).toBe('test-project');
+});
