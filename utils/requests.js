@@ -1,5 +1,10 @@
 const http = require('@actions/http-client');
 
-const _http = new http.HttpClient('test');
 
-module.exports = _http;
+class Api {
+  constructor(clientName) {
+    this.client = new http.HttpClient(clientName);
+  }
+}
+
+module.exports = Api;

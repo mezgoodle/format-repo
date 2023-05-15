@@ -1,5 +1,5 @@
 const wait = require('../wait');
-const _http = require("../utils/requests");
+const Api = require("../utils/requests");
 const process = require('process');
 const cp = require('child_process');
 const path = require('path');
@@ -26,6 +26,6 @@ test('test runs', () => {
 });
 
 test('request tests', () => {
-  const http = _http;
-  expect(http).toBeDefined()
+  const api = new Api("test-client");
+  expect(api).toBeDefined()
 })

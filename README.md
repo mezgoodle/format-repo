@@ -1,4 +1,5 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=mezgoodle_share-repo&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=mezgoodle_share-repo)
+[![codecov](https://codecov.io/gh/mezgoodle/share-repo/branch/main/graph/badge.svg?token=UTFT25WNFD)](https://codecov.io/gh/mezgoodle/share-repo)
 
 # Hello world javascript action
 
