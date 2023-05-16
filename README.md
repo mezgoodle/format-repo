@@ -31,5 +31,6 @@ https://github.com/actions/javascript-action
 https://github.com/actions/toolkit
 https://docs.github.com/en/actions/creating-actions/creating-a-javascript-action
 https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions
+https://docs.gitlab.com/ee/api/projects.html#get-single-project
 
 `npm i -g @vercel/ncc`

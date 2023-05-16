@@ -26,8 +26,9 @@ test('test runs', () => {
 });
 
 test('request tests', async () => {
-  const api = new Api('test-client');
+  const projectName = 'StudyHepler'
+  const api = new Api('test-client', 'test-token', 'mezgoodle');
   expect(api).toBeDefined();
-  const obj = await api.checkRepository('43937419');
-  expect(obj.name).toBe('test-project');
+  const obj = await api.checkRepository(projectName);
+  expect(obj.name).toBe(projectName);
 });
