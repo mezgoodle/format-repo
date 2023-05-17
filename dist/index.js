@@ -10858,7 +10858,6 @@ options.listeners = {
     myError += data.toString();
   },
 };
-options.cwd = './lib';
 
 module.exports = {myOutput, myError, options};
 
