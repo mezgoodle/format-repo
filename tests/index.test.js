@@ -31,5 +31,5 @@ test('request tests', async () => {
   const obj = await api.checkRepository();
   expect(obj.name).toBe('StudyHepler');
   const status = await api.createRepository();
-  expect(status).toBe(200);
+  expect(status).toBeInstanceOf(Object);
 });

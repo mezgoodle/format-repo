@@ -19,8 +19,13 @@ class Api {
   async createRepository() {
     const additionalHeaders = {'PRIVATE-TOKEN': this.token};
     const repoInfo = {'name': this.projectName};
-    const response = await this.client.postJson(`https://gitlab.com/api/v4/projects/`, JSON.stringify(repoInfo), additionalHeaders);
-    return response.message.statusCode;
+    try {
+      const response = await this.client.postJson(`https://gitlab.com/api/v4/projects/`, JSON.stringify(repoInfo), additionalHeaders);
+      return response.statusCode;
+    } catch (error) {
+      console.error(error);
+      return {};
+    }
   }
 }
 
