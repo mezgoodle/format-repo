@@ -3,7 +3,7 @@ description: "Greet someone and record the time"
 inputs:
   gitlabToken: # id of input
     description: "GitLab API Token"
-    required: false
+    required: true
   bitbucketToken: # id of input
     description: "BitBucket API Token"
     required: false

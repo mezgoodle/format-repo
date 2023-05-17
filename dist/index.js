@@ -11074,7 +11074,7 @@ const {myOutput, myError, options} = __nccwpck_require__(4208);
 const mainFunc = async () => {
   // `who-to-greet` input defined in action metadata file
   core.info('Show git command');
-  await exec.exec({commandLine: 'git status', options: options});
+  await exec.exec('git status', [], options);
   console.log(myOutput);
   console.log(myError);
   core.info('Getting the variables');
