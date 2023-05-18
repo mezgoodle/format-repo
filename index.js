@@ -15,8 +15,8 @@ const mainFunc = async () => {
   if (javascriptFlag) {
     await formatJS();
   }
-  const payload = JSON.stringify(github.context.payload, undefined, 2);
-  console.log(`The event payload: ${payload}`);
+  const payload = JSON.stringify(github.context.payload);
+  console.log(`The owner: ${payload.repository.owner.login}`);
   const octokit = github.getOctokit(myToken);
   await octokit.rest.git.createCommit({
     owner: payload.repository.owner.login,
