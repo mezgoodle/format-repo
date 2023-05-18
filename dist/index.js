@@ -10871,12 +10871,12 @@ const exec = __nccwpck_require__(2648);
 const {options} = __nccwpck_require__(4208);
 
 const formatJS = async () => {
-  await exec.exec('npx prettier --write .', [], options);
+  await exec.exec('npx prettier --write src/', [], options);
 };
 
 const formatPython = async () => {
   await exec.exec('pip install black', [], options);
-  await exec.exec('black .', [], options);
+  await exec.exec('black src/', [], options);
 };
 
 module.exports = {
