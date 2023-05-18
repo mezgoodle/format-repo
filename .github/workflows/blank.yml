@@ -34,5 +34,5 @@ jobs:
         uses: ./ # Uses an action in the root directory
         with:
           python: true
-          javascript: false
+          javascript: true
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
