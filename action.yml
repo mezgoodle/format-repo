@@ -1,11 +1,14 @@
 name: "Hello World"
 description: "Greet someone and record the time"
 inputs:
-  gitlabToken:
-    description: "GitLab API Token"
+  gitHubToken:
+    description: "GitHub Token"
     required: true
-  bitbucketToken:
-    description: "BitBucket API Token"
+  python:
+    description: "Flag to format python code"
+    required: false
+  javascript:
+    description: "Flag to format javascript code"
     required: false
 
 runs:

@@ -1,32 +1,33 @@
-const core = require('@actions/core');
-const github = require('@actions/github');
-const exec = require('@actions/exec');
-const {myOutput, myError, options} = require('./utils/config');
+const core = require("@actions/core");
+const github = require("@actions/github");
+const { myError } = require("./utils/config");
+const { formatJS, formatPython } = require("./utils/formatters");
 
 const mainFunc = async () => {
-  // `who-to-greet` input defined in action metadata file
-  core.info('Show git command');
-  await exec.exec('python --version', [], options);
-  await exec.exec('npm --version', [], options);
-  await exec.exec('pip --version', [], options);
-  console.log(myOutput);
-  console.log(myError);
-  core.info('Getting the variables');
-  core.info('Show git command');
-  const gitlabToken = core.getInput('gitlabToken', {required: false});
-  console.log(`GitLab token: ${gitlabToken}!`);
-  const bitbucketToken = core.getInput('bitbucketToken', {required: false});
-  console.log(`BitBucket Token: ${bitbucketToken}!`);
+  const myToken = core.getInput("gitHubToken", { required: true });
+  const pythonFlag = core.getBooleanInput("python", { required: false });
+  const javascriptFlag = core.getBooleanInput("javascript", {
+    required: false,
+  });
+  if (pythonFlag) {
+    await formatPython();
+  }
+  if (javascriptFlag) {
+    await formatJS();
+  }
   const payload = JSON.stringify(github.context.payload, undefined, 2);
-  // const commitMessage = payload.commits[0].message;
-  // const branchName = payload.ref.split('/').pop();
-  // Get the JSON webhook payload for the event that triggered the workflow
-
-  console.log(`The event payload: ${payload}`);
+  const octokit = github.getOctokit(myToken);
+  await octokit.rest.git.createCommit({
+    owner: payload.repository.owner.login,
+    repo: payload.repository.name,
+    message: "Format code",
+    tree: payload.ref.split("/")[2],
+  });
 };
 
 try {
   mainFunc();
 } catch (error) {
+  core.info(myError);
   core.setFailed(error.message);
 }

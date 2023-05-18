@@ -33,7 +33,5 @@ jobs:
       - name: Hello world action step
         uses: ./ # Uses an action in the root directory
         with:
-          gitlabToken: "gitlab-token"
-          bitbucketToken: "bitbucket-token"
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+          python: true
+          javascript: false
