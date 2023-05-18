@@ -1,15 +1,13 @@
 name: "Hello World"
 description: "Greet someone and record the time"
 inputs:
-  gitlabToken: # id of input
+  gitlabToken:
     description: "GitLab API Token"
     required: true
-  bitbucketToken: # id of input
+  bitbucketToken:
     description: "BitBucket API Token"
     required: false
-outputs:
-  time: # id of output
-    description: "The time we greeted you"
+
 runs:
   using: "node16"
   main: "dist/index.js"
