@@ -11090,13 +11090,13 @@ var __webpack_exports__ = {};
 (() => {
 const core = __nccwpck_require__(7744);
 const github = __nccwpck_require__(6658);
-const { myError } = __nccwpck_require__(4208);
-const { formatJS, formatPython } = __nccwpck_require__(8966);
+const {myError} = __nccwpck_require__(4208);
+const {formatJS, formatPython} = __nccwpck_require__(8966);
 
 const mainFunc = async () => {
-  const myToken = core.getInput("gitHubToken", { required: true });
-  const pythonFlag = core.getBooleanInput("python", { required: false });
-  const javascriptFlag = core.getBooleanInput("javascript", {
+  const myToken = core.getInput('gitHubToken', {required: true});
+  const pythonFlag = core.getBooleanInput('python', {required: false});
+  const javascriptFlag = core.getBooleanInput('javascript', {
     required: false,
   });
   if (pythonFlag) {
@@ -11106,12 +11106,13 @@ const mainFunc = async () => {
     await formatJS();
   }
   const payload = JSON.stringify(github.context.payload, undefined, 2);
+  console.log(`The event payload: ${payload}`);
   const octokit = github.getOctokit(myToken);
   await octokit.rest.git.createCommit({
     owner: payload.repository.owner.login,
     repo: payload.repository.name,
-    message: "Format code",
-    tree: payload.ref.split("/")[2],
+    message: 'Format code',
+    tree: payload.ref.split('/')[2],
   });
 };
 
