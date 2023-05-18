@@ -35,3 +35,4 @@ jobs:
         with:
           python: true
           javascript: false
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
