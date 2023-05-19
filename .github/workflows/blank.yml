@@ -19,6 +19,7 @@ jobs:
     # - name: Test code
     #   run: npm test
     - name: Upload coverage reports to Codecov
+      if: matrix.node-version == '16.x'
       uses: codecov/codecov-action@v3
 
   test_workflow:
@@ -35,5 +36,5 @@ jobs:
         with:
           python: true
           javascript: true
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          projectFolder: 'src/'
+          gitHubToken: ${{ secrets.TOKEN }}
+          # projectFolder: 'src/'
