@@ -1,13 +1,13 @@
 const exec = require('@actions/exec');
 const {options} = require('./config');
 
-const formatJS = async () => {
-  await exec.exec('npx prettier --write src/', [], options);
+const formatJS = async (projectFolder) => {
+  await exec.exec(`npx prettier --write ${projectFolder}`, [], options);
 };
 
-const formatPython = async () => {
+const formatPython = async (projectFolder) => {
   await exec.exec('pip install black', [], options);
-  await exec.exec('black src/', [], options);
+  await exec.exec(`black ${projectFolder}`, [], options);
 };
 
 module.exports = {

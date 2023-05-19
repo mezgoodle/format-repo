@@ -9,11 +9,12 @@ const mainFunc = async () => {
   const javascriptFlag = core.getBooleanInput('javascript', {
     required: false,
   });
+  const projectFolder = core.getInput('projectFolder') || '.';
   if (pythonFlag) {
-    await formatPython();
+    await formatPython(projectFolder);
   }
   if (javascriptFlag) {
-    await formatJS();
+    await formatJS(projectFolder);
   }
   const payload = github.context.payload;
   console.log(`The owner: ${payload.repository.owner.login}`);

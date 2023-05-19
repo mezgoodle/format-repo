@@ -10,6 +10,9 @@ inputs:
   javascript:
     description: "Flag to format javascript code"
     required: false
+  projectFolder:
+    description: "Path to the project folder"
+    required: false
 
 runs:
   using: "node16"

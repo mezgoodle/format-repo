@@ -36,3 +36,4 @@ jobs:
           python: true
           javascript: true
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          projectFolder: 'src/'

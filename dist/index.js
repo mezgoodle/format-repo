@@ -10870,13 +10870,13 @@ module.exports = {myOutput, myError, options};
 const exec = __nccwpck_require__(2648);
 const {options} = __nccwpck_require__(4208);
 
-const formatJS = async () => {
-  await exec.exec('npx prettier --write src/', [], options);
+const formatJS = async (projectFolder) => {
+  await exec.exec(`npx prettier --write ${projectFolder}`, [], options);
 };
 
-const formatPython = async () => {
+const formatPython = async (projectFolder) => {
   await exec.exec('pip install black', [], options);
-  await exec.exec('black src/', [], options);
+  await exec.exec(`black ${projectFolder}`, [], options);
 };
 
 module.exports = {
@@ -11099,11 +11099,12 @@ const mainFunc = async () => {
   const javascriptFlag = core.getBooleanInput('javascript', {
     required: false,
   });
+  const projectFolder = core.getInput('projectFolder') || '.';
   if (pythonFlag) {
-    await formatPython();
+    await formatPython(projectFolder);
   }
   if (javascriptFlag) {
-    await formatJS();
+    await formatJS(projectFolder);
   }
   const payload = github.context.payload;
   console.log(`The owner: ${payload.repository.owner.login}`);
