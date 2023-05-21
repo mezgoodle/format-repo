@@ -1,1 +1,1 @@
-print("dasdad")
+print('dasdad')
