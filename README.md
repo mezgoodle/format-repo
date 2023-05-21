@@ -1,5 +1,6 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=mezgoodle_share-repo&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=mezgoodle_share-repo)
 [![codecov](https://codecov.io/gh/mezgoodle/share-repo/branch/main/graph/badge.svg?token=UTFT25WNFD)](https://codecov.io/gh/mezgoodle/share-repo)
+[![Test action](https://github.com/mezgoodle/share-repo/actions/workflows/blank.yml/badge.svg)](https://github.com/mezgoodle/share-repo/actions/workflows/blank.yml)
 
 # Hello world javascript action
 
@@ -10,12 +11,6 @@ This action prints "Hello World" or "Hello" + the name of a person to greet to t
 ### `who-to-greet`
 
 **Required** The name of the person to greet. Default `"World"`.
-
-## Outputs
-
-### `time`
-
-The time we greeted you.
 
 ## Example usage
 
