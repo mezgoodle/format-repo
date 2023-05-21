@@ -24,12 +24,12 @@ jobs:
 
   test_workflow:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: Test workflow locally
     needs: lint_and_test
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Test workflow locally
+      - name: Run the action
         uses: ./
         with:
           python: true

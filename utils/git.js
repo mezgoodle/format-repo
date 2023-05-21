@@ -1,5 +1,5 @@
 const exec = require('@actions/exec');
-const {options} = require('./utils/config');
+const {options} = require('./config');
 
 const gitAction =async (payload, token) => {
   await exec.exec(`git config --global user.name ${payload.pusher.name}`);

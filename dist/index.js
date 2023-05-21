@@ -10891,7 +10891,7 @@ module.exports = {
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 const exec = __nccwpck_require__(2648);
-const {options} = __nccwpck_require__(549);
+const {options} = __nccwpck_require__(4208);
 
 const gitAction =async (payload, token) => {
   await exec.exec(`git config --global user.name ${payload.pusher.name}`);
@@ -10902,14 +10902,6 @@ const gitAction =async (payload, token) => {
 };
 
 module.exports = {gitAction};
-
-
-/***/ }),
-
-/***/ 549:
-/***/ ((module) => {
-
-module.exports = eval("require")("./utils/config");
 
 
 /***/ }),
