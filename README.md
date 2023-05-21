@@ -2,30 +2,36 @@
 [![codecov](https://codecov.io/gh/mezgoodle/share-repo/branch/main/graph/badge.svg?token=UTFT25WNFD)](https://codecov.io/gh/mezgoodle/share-repo)
 [![Test action](https://github.com/mezgoodle/share-repo/actions/workflows/blank.yml/badge.svg)](https://github.com/mezgoodle/share-repo/actions/workflows/blank.yml)
 
-# Hello world javascript action
+# Format repo
 
-This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
+Hello! This is my project for [GitHub + DEV 2023 Hackathon](https://dev.to/devteam/announcing-the-github-dev-2023-hackathon-4ocn). I created an action that formats the code in Python and JavaScript and automatically pushes the corrected code to the repository.
 
 ## Inputs
 
-### `who-to-greet`
+### `githubToken`
 
-**Required** The name of the person to greet. Default `"World"`.
+**Required** The GitHub Token with `repo:scope`.
+
+### `python`
+
+**Not required** Flag to format python code.
+
+### `javascript`
+
+**Not required** Flag to format javascript code.
+
+### `projectFolder`
+
+**Not required** Path to the project folder.
 
 ## Example usage
 
 ```yaml
-uses: actions/hello-world-javascript-action@e76147da8e5c81eaf017dede5645551d4b94427b
-with:
-  who-to-greet: "Mona the Octocat"
+- name: Run the action
+  uses: mezgoodle/format-repo@v1.0.0
+  with:
+    python: true
+    javascript: true
+    gitHubToken: ${{ secrets.TOKEN }}
+    projectFolder: 'src/'
 ```
-
-# Links and examples
-
-https://github.com/actions/javascript-action
-https://github.com/actions/toolkit
-https://docs.github.com/en/actions/creating-actions/creating-a-javascript-action
-https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions
-https://docs.gitlab.com/ee/api/projects.html#get-single-project
-
-`npm i -g @vercel/ncc`
