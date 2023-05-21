@@ -1,11 +1,9 @@
 const core = require('@actions/core');
 const exec = require('@actions/exec');
-const github = require('@actions/github');
 const {myError, options} = require('./utils/config');
 const {formatJS, formatPython} = require('./utils/formatters');
 
 const mainFunc = async () => {
-  const myToken = core.getInput('gitHubToken', {required: true});
   const pythonFlag = core.getBooleanInput('python', {required: false});
   const javascriptFlag = core.getBooleanInput('javascript', {
     required: false,
