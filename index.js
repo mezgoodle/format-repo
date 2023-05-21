@@ -6,7 +6,7 @@ const {formatJS, formatPython} = require('./utils/formatters');
 
 const mainFunc = async () => {
   const pythonFlag = core.getBooleanInput('python', {required: false});
-  const token = core.getBooleanInput('gitHubToken', {required: true});
+  const token = core.getInput('gitHubToken', {required: true});
   const javascriptFlag = core.getBooleanInput('javascript', {
     required: false,
   });
