@@ -5,7 +5,6 @@ const gitAction =async (payload, token) => {
   await exec.exec(`git config --global user.name ${payload.pusher.name}`);
   await exec.exec(`git config --global user.email  ${payload.pusher.email}`);
   await exec.exec('git commit -am "Automated format"', [], options);
-  await exec.exec('git status', [], options);
   await exec.exec(`git push https://oauth2:${token}@github.com/${payload.repository.full_name}.git`, [], options);
 };
 

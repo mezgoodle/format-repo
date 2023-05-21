@@ -10897,7 +10897,6 @@ const gitAction =async (payload, token) => {
   await exec.exec(`git config --global user.name ${payload.pusher.name}`);
   await exec.exec(`git config --global user.email  ${payload.pusher.email}`);
   await exec.exec('git commit -am "Automated format"', [], options);
-  await exec.exec('git status', [], options);
   await exec.exec(`git push https://oauth2:${token}@github.com/${payload.repository.full_name}.git`, [], options);
 };
 
@@ -11114,7 +11113,7 @@ const {gitAction} = __nccwpck_require__(114);
 const {formatJS, formatPython} = __nccwpck_require__(8966);
 
 const mainFunc = async () => {
-  core.debug('Taking variables...');
+  core.info('Taking variables...');
   const token = core.getInput('gitHubToken', {required: true});
   core.info('GitHub token was taken.');
   const pythonFlag = core.getBooleanInput('python', {required: false});
@@ -11127,16 +11126,16 @@ const mainFunc = async () => {
   core.info(`Project folder values is "${projectFolder}".`);
   const payload = github.context.payload;
   if (pythonFlag) {
-    core.debug('Start formatting Python files...');
+    core.info('Start formatting Python files...');
     await formatPython(projectFolder);
     core.info('Formatting is over.');
   } else core.info('Python formatting is skipped.');
   if (javascriptFlag) {
-    core.debug('Start formatting JavaScript files...');
+    core.info('Start formatting JavaScript files...');
     await formatJS(projectFolder);
     core.info('Formatting is over.');
   } else core.info('JavaScript formatting is skipped.');
-  core.debug('Commit changes...');
+  core.info('Commit changes...');
   await gitAction(payload, token);
 };
 
