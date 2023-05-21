@@ -10896,12 +10896,12 @@ const {options} = __nccwpck_require__(4208);
 const gitAction =async (payload, token) => {
   await exec.exec(`git config --global user.name ${payload.pusher.name}`);
   await exec.exec(`git config --global user.email  ${payload.pusher.email}`);
-  await exec.exec('git commit -am "Automated format"', [], options);
   try {
-    await exec.exec(`git push https://oauth2:${token}@github.com/${payload.repository.full_name}.git`, [], options);
+    await exec.exec('git commit -am "Automated format"', [], options);
   } catch (error) {
-    console.log("Error with push");
+    console.log(error);
   }
+  await exec.exec(`git push https://oauth2:${token}@github.com/${payload.repository.full_name}.git`, [], options);
 };
 
 module.exports = {gitAction};
