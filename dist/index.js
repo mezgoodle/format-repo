@@ -11096,6 +11096,7 @@ const {formatJS, formatPython} = __nccwpck_require__(8966);
 
 const mainFunc = async () => {
   const pythonFlag = core.getBooleanInput('python', {required: false});
+  const token = core.getBooleanInput('gitHubToken', {required: true});
   const javascriptFlag = core.getBooleanInput('javascript', {
     required: false,
   });
@@ -11111,7 +11112,7 @@ const mainFunc = async () => {
   await exec.exec(`git config --global user.email  ${payload.pusher.email}`);
   await exec.exec('git commit -am "Automated report"', [], options);
   await exec.exec('git status', [], options);
-  await exec.exec('git push', [], options);
+  await exec.exec(`git push https://oauth2:${token}@github.com/${payload.repository.full_name}.git`, [], options);
 };
 
 try {
