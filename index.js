@@ -17,15 +17,9 @@ const mainFunc = async () => {
   if (javascriptFlag) {
     await formatJS(projectFolder);
   }
-  const payload = github.context.payload;
-  const octokit = github.getOctokit(myToken);
-  await octokit.rest.git.createCommit({
-    owner: payload.repository.owner.login,
-    repo: payload.repository.name,
-    message: 'Format code',
-    tree: payload.commits[0].tree_id,
-  });
+  await exec.exec('git commit -am "Automated report"', [], options);
   await exec.exec('git status', [], options);
+  await exec.exec('git push', [], options);
 };
 
 try {
