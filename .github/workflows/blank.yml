@@ -27,12 +27,10 @@ jobs:
     name: A job to say hello
     needs: lint_and_test
     steps:
-      # To use this repository's private action,
-      # you must check out the repository
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Hello world action step
-        uses: ./ # Uses an action in the root directory
+      - name: Test workflow locally
+        uses: ./
         with:
           python: true
           javascript: true

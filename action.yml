@@ -1,5 +1,5 @@
-name: "Hello World"
-description: "Greet someone and record the time"
+name: "Format repo"
+description: "Format Python and JS code and auto-commit to your repository"
 inputs:
   gitHubToken:
     description: "GitHub Token"

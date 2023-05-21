@@ -10887,6 +10887,33 @@ module.exports = {
 
 /***/ }),
 
+/***/ 114:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+const exec = __nccwpck_require__(2648);
+const {options} = __nccwpck_require__(549);
+
+const gitAction =async (payload, token) => {
+  await exec.exec(`git config --global user.name ${payload.pusher.name}`);
+  await exec.exec(`git config --global user.email  ${payload.pusher.email}`);
+  await exec.exec('git commit -am "Automated format"', [], options);
+  await exec.exec('git status', [], options);
+  await exec.exec(`git push https://oauth2:${token}@github.com/${payload.repository.full_name}.git`, [], options);
+};
+
+module.exports = {gitAction};
+
+
+/***/ }),
+
+/***/ 549:
+/***/ ((module) => {
+
+module.exports = eval("require")("./utils/config");
+
+
+/***/ }),
+
 /***/ 8687:
 /***/ ((module) => {
 
@@ -11089,30 +11116,36 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const core = __nccwpck_require__(7744);
-const exec = __nccwpck_require__(2648);
 const github = __nccwpck_require__(6658);
-const {myError, options} = __nccwpck_require__(4208);
+const {myError} = __nccwpck_require__(4208);
+const {gitAction} = __nccwpck_require__(114);
 const {formatJS, formatPython} = __nccwpck_require__(8966);
 
 const mainFunc = async () => {
-  const pythonFlag = core.getBooleanInput('python', {required: false});
+  core.debug('Taking variables...');
   const token = core.getInput('gitHubToken', {required: true});
+  core.info('GitHub token was taken.');
+  const pythonFlag = core.getBooleanInput('python', {required: false});
+  core.info('Python flag was taken.');
   const javascriptFlag = core.getBooleanInput('javascript', {
     required: false,
   });
-  const payload = github.context.payload;
+  core.info('JavaScript token was taken.');
   const projectFolder = core.getInput('projectFolder') || '.';
+  core.info(`Project folder values is "${projectFolder}".`);
+  const payload = github.context.payload;
   if (pythonFlag) {
+    core.debug('Start formatting Python files...');
     await formatPython(projectFolder);
-  }
+    core.info('Formatting is over.');
+  } else core.info('Python formatting is skipped.');
   if (javascriptFlag) {
+    core.debug('Start formatting JavaScript files...');
     await formatJS(projectFolder);
-  }
-  await exec.exec(`git config --global user.name ${payload.pusher.name}`);
-  await exec.exec(`git config --global user.email  ${payload.pusher.email}`);
-  await exec.exec('git commit -am "Automated report"', [], options);
-  await exec.exec('git status', [], options);
-  await exec.exec(`git push https://oauth2:${token}@github.com/${payload.repository.full_name}.git`, [], options);
+    core.info('Formatting is over.');
+  } else core.info('JavaScript formatting is skipped.');
+  core.debug('Commit changes...');
+  await gitAction(payload, token);
 };
 
 try {
