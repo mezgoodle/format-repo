@@ -11089,8 +11089,9 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const core = __nccwpck_require__(7744);
+const exec = __nccwpck_require__(2648);
 const github = __nccwpck_require__(6658);
-const {myError} = __nccwpck_require__(4208);
+const {myError, options} = __nccwpck_require__(4208);
 const {formatJS, formatPython} = __nccwpck_require__(8966);
 
 const mainFunc = async () => {
@@ -11114,6 +11115,7 @@ const mainFunc = async () => {
     message: 'Format code',
     tree: payload.commits[0].tree_id,
   });
+  await exec.exec('git status', [], options);
 };
 
 try {

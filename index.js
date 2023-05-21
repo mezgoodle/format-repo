@@ -1,6 +1,7 @@
 const core = require('@actions/core');
+const exec = require('@actions/exec');
 const github = require('@actions/github');
-const {myError} = require('./utils/config');
+const {myError, options} = require('./utils/config');
 const {formatJS, formatPython} = require('./utils/formatters');
 
 const mainFunc = async () => {
@@ -24,6 +25,7 @@ const mainFunc = async () => {
     message: 'Format code',
     tree: payload.commits[0].tree_id,
   });
+  await exec.exec('git status', [], options);
 };
 
 try {
